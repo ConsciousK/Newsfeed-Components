@@ -99,6 +99,50 @@ const data = [
     <span class='expandButton'></span>
   </div>
 
+*/
+function articleCreator(data){
+  const article = document.createElement('div');
+  console.log(article);
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+  title.textContent = data.title;
+  date.textContent = data.date;
+  firstParagraph.textContent = data.firstParagraph;
+  secondParagraph.textContent = data.secondParagraph;
+  thirdParagraph.textContent = data.thirdParagraph;
+  expandButton.textContent = 'Expand';
+
+  article.classList.add('article');
+  date.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  expandButton.addEventListener("click", () => {
+     article.classList.toggle("article-open");
+  });
+
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(expandButton);
+
+  return article;
+}
+
+let container = document.querySelector('.articles');
+
+for (let i = 0; i < data.length; i++){
+  let newArticle = articleCreator(data[i]);
+  container.appendChild(newArticle);
+}
+
+/*
   Hint: You will need to use createElement more than once here!
 
   Your function should take either an object as it's one argument, or 5 separate arguments mapping to each peice of the data object above.
@@ -108,7 +152,9 @@ const data = [
   Step 3: return the entire component.
 
   Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+*/
 
+/*
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
